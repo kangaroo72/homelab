@@ -1,0 +1,34 @@
+---
+version: '3.7'
+
+services:
+  traefik:
+    image: traefik:v2.7
+    container_name: traefik
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config:/etc/traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.domain.tld`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls.certresolver=default"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.middlewares=auth@docker"
+      - "traefik.http.middlewares.auth.basicauth.users=user:pass"
+    networks:
+      - traefik_proxy
+      - default
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge
