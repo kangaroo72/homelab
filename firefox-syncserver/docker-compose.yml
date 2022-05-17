@@ -1,0 +1,30 @@
+---
+version: '3.7'
+services:
+  mozilla-sync:
+    container_name: mozilla-sync
+    image: crazymax/firefox-syncserver:latest
+    volumes:
+      - "ff-syncserver:/data"
+    restart: always
+    env_file:
+      - ffsync.env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mozilla-sync.rule=Host(`${FF_SYNCSERVER_DOMAIN}`)"
+      - "traefik.http.routers.mozilla-sync.tls=true"
+      - "traefik.http.routers.mozilla-sync.tls.certresolver=default"
+      - "traefik.http.routers.mozilla-sync.entrypoints=websecure"
+      - "traefik.http.services.mozilla-sync.loadbalancer.server.port=5000"
+    networks:
+      - traefik_proxy
+
+volumes:
+  ff-syncserver:
+    name: ff-syncserver
+    external: true
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
