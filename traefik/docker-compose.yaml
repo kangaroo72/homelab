@@ -12,7 +12,7 @@ services:
       - ./config:/etc/traefik
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.lab-tom.de`) && (PathPrefix(`/api`) || Pa>
+      - "traefik.http.routers.traefik.rule=Host(`traefik.expample.com`) && (PathPrefix(`/api`) || Pa>
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls.certresolver=default"
       - "traefik.http.routers.traefik.service=api@internal"
