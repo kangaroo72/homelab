@@ -1,0 +1,35 @@
+version: '3.3'
+services:
+  collabora:
+    image: collabora/code
+    container_name: collabora_app
+    networks:
+      - traefik_proxy
+    cap_add:
+      - MKNOD
+    expose:
+      - 9980
+    environment:
+      - domain=cloud.domain.tld #provide your nextcloud-domain here
+      - username=admin     #Username for Collabora-Admin-Panel
+      - password=password  #Password for Collabora-Admin-Panel
+      - "extra_params=--o:ssl.enable=false --o:ssl.termination=true"
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.collabora-secure.entrypoints=websecure"
+      - "traefik.http.routers.collabora-secure.rule=Host(`${COLLABORA_DOMAIN}`)"
+      - "traefik.http.routers.collabora-secure.tls=true"
+      - "traefik.http.routers.collabora-secure.tls.certresolver=default"
+      - "traefik.http.routers.collabora-secure.service=collabora"
+      - "traefik.http.services.collabora.loadbalancer.server.port=9980"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.http.routers.collabora-secure.middlewares=secHeaders@file"
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge
