@@ -1,4 +1,4 @@
-# Home Assistant
+# Collabora Office (Traefik 2)
 
 Collabora-Docker-Compose-File (tested with Nextcloud 24)
 
