@@ -10,10 +10,12 @@ Ubuntu 22.04 LTS as operating system
 
 [Nextcloud](https://github.com/kangaroo72/home-lab/tree/main/nextcloud) -> https://cloud.domain.tld
 
+[Office](https://github.com/kangaroo72/home-lab/tree/main/collabora) -> https://office.domain.tld
 
-https://office.domain.tld -> Collabora Office (https://github.com/kangaroo72/home-lab/tree/main/collabora)
-https://safe.domain.tld -> Vaultwarden (https://github.com/kangaroo72/home-lab/tree/main/vaultwarden)
-https://traefik.domain.tld -> Traefik (https://github.com/kangaroo72/home-lab/tree/main/traefik)
+[Vaultwarden](https://github.com/kangaroo72/home-lab/tree/main/vaultwarden) -> https://safe.domain.tld
+
+[Traefik](https://github.com/kangaroo72/home-lab/tree/main/traefik) -> https://traefik.domain.tld
+
 
 Please install openssh-server before starting. Once done, we're starting with..
 
