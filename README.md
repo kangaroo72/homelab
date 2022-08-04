@@ -8,7 +8,7 @@ Ubuntu 22.04 LTS as operating system
 
 https://domain.tld -> - [Wordpress](https://github.com/kangaroo72/home-lab/tree/main/wordpress)
 
-https://cloud.domain.tld -> Nextcloud (https://github.com/kangaroo72/home-lab/tree/main/nextcloud)
+https://cloud.domain.tld -> [Nextcloud](https://github.com/kangaroo72/home-lab/tree/main/nextcloud)
 https://office.domain.tld -> Collabora Office (https://github.com/kangaroo72/home-lab/tree/main/collabora)
 https://safe.domain.tld -> Vaultwarden (https://github.com/kangaroo72/home-lab/tree/main/vaultwarden)
 https://traefik.domain.tld -> Traefik (https://github.com/kangaroo72/home-lab/tree/main/traefik)
