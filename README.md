@@ -2,13 +2,25 @@
 
 An archive of my home-server setup.
 
-We're starting with Traefik. Traefik is a reverse-proxy, who's sending the incoming requests to container like Nextcloud, Vaultwarden, ...
+My environment is:
 
-My base is an Ubuntu 22.04LTS-System. You have to install Docker like this:
+Ubuntu 22.04 LTS as operating system
+
+https://domain.tld -> Wordpress (https://github.com/kangaroo72/home-lab/tree/main/wordpress)
+https://cloud.domain.tld -> Nextcloud (https://github.com/kangaroo72/home-lab/tree/main/nextcloud)
+https://office.domain.tld -> Collabora Office (https://github.com/kangaroo72/home-lab/tree/main/collabora)
+https://safe.domain.tld -> Vaultwarden (https://github.com/kangaroo72/home-lab/tree/main/vaultwarden)
+https://traefik.domain.tld -> Traefik (https://github.com/kangaroo72/home-lab/tree/main/traefik)
+
+Please install openssh-server before starting. Once done, we're starting with..
+
+I'm using the apps in following order...
+
+01. Traefik, 02. Wordpress, 03. Nextcloud, 04. Collabora, 05. Vaultwarden (more apps coming soon...)
+
+Docker-Setup is mandatory before starting:
 
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 
-for managing your server, the best way is to have an openssh-server installed.
-
-The next step is setting up Traefik. Look in the folder for that.
+Once docker is installed, go ahead with Traefik.
