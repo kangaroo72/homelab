@@ -24,8 +24,8 @@ I'm using the apps in following order...
 01. Traefik, 02. Wordpress, 03. Nextcloud, 04. Collabora, 05. Vaultwarden (more apps coming soon...)
 
 Docker-Setup is mandatory before starting:
-
+```
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
-
+```
 Once docker is installed, go ahead with Traefik.
