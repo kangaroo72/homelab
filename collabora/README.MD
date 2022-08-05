@@ -1,4 +1,4 @@
-# Collabora Office (Traefik 2)
+# Collabora Office (Traefik 2) - last test: 2022-08-05
 
 Collabora-Docker-Compose-File (tested with Nextcloud 24)
 
