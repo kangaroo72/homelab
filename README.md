@@ -1,6 +1,6 @@
 # home-lab
 
-An archive of my home-server setup.
+An archive of my home-server setup. Much thanks @thiloms
 
 My environment is:
 
