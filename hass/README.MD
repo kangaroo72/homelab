@@ -20,4 +20,20 @@ http:
 ```
 Traefik:
 
-Coming soon...
+Add the following code to your dynamic.yml
+
+```
+  routers:
+    home-assistant:
+      service: home-assistant
+      rule: "Host(`hass.domain.tld`)"   # Change to your Homeassistant-Sub-domain
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: default
+  services:
+    home-assistant:
+      loadBalancer:
+        servers:
+          - url: http://192.168.200.6:8123
+```
