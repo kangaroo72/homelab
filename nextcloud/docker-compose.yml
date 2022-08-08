@@ -72,31 +72,6 @@ services:
       - nextcloud-db
       - nextcloud-redis
 
-  collabora:
-    image: collabora/code
-    container_name: collabora_app
-    networks:
-      - traefik_proxy
-    cap_add:
-      - MKNOD
-    expose:
-      - 9980
-    environment:
-      - aliasgroup1=https://cloud.domain.tld:443
-      - username=xxxxx     #Nutzername eingeben
-      - password=xxxxx     #Passwort eingeben
-      - "extra_params=--o:ssl.enable=false --o:ssl.termination=true"
-    restart: unless-stopped
-
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.collabora.entrypoints=websecure"
-      - "traefik.http.routers.collabora.rule=Host(`office.domain.tld`)"  #URL anpassen
-      - "traefik.http.routers.collabora.tls=true"
-      - "traefik.http.routers.collabora.tls.certresolver=default"
-      - "traefik.http.routers.collabora.middlewares=secHeaders@file"
-      - "traefik.http.services.collabora.loadbalancer.server.port=9980"
-
 networks:
   traefik_proxy:
     external:
