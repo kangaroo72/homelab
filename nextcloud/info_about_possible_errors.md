@@ -12,3 +12,6 @@ Open your config.php and add
 ```
 ‘default_phone_region’ => ‘DE’,
 ```
+#Info 'about "external storage app':
+
+Ensure, that smbclient is installed
