@@ -10,7 +10,7 @@ Error: Your installation has no default phone region set.
 Open your config.php and add
 
 ```
-‘default_phone_region’ => ‘DE’,
+'default_phone_region' => 'DE',
 ```
 #Info 'about "external storage app':
 
