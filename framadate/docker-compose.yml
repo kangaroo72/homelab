@@ -1,0 +1,28 @@
+---
+version: '3'
+
+services:
+  framadate:
+    image: lefilament/framadate
+    container_name: framadate
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.framadate.entrypoints=websecure"
+      - "traefik.http.routers.framadate.rule=date.escher.cc"
+      - "traefik.http.routers.framadate.tls=true"
+      - "traefik.http.routers.framadate.tls.certresolver=default"
+      - "traefik.http.routers.framadate.middlewares=secHeaders@file"
+      - "traefik.http.services.framadate.loadbalancer.server.port=80"
+    environment:
+      - ADMIN_USER=adminuser
+      - ADMIN_PASSWORD=adminpass
+      - MYSQL_USER=sqluser
+      - MYSQL_PASSWORD=sqlpass
+      - MYSQL_DB=framadate
+      - MYSQL_HOST=172.17.0.2
+      - DOMAIN=192.168.200.10
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
