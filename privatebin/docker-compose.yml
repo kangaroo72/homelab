@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  app:
+    image: privatebin/nginx-fpm-alpine
+    networks:
+      - traefik_proxy
+#    volumes:
+#      - '$PWD/paste:/srv/data'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.paste.entrypoints=websecure"
+      - "traefik.http.routers.paste.rule=Host(`sub.domain.tld`)"  # set your domain
+      - "traefik.http.routers.paste.tls=true"
+      - "traefik.http.routers.paste.tls.certresolver=default"
+      - "traefik.http.routers.paste.middlewares=secHeaders@file"
+      - "traefik.http.services.paste.loadbalancer.server.port=8080"
+
+networks:
+  traefik_proxy:
+    external: true
