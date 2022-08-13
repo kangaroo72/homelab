@@ -29,15 +29,19 @@ services:
       - "traefik.http.routers.framadate.tls.certresolver=default"
       - "traefik.http.routers.framadate.middlewares=secHeaders@file"
       - "traefik.http.services.framadate.loadbalancer.server.port=80"
+    networks:
+      - default
+      - traefik_proxy
+
     environment:
       - ADMIN_USER=admin
       - ADMIN_PASSWORD=testpilot
       - MYSQL_USER=sqluser
       - MYSQL_PASSWORD=sqlrootpass
       - MYSQL_DB=framadate
-      - MYSQL_HOST=192.168.64.2
+      - MYSQL_HOST=framadate-db
       - MYSQL_PORT=3306
-      - DOMAIN=192.168.200.10
+      - DOMAIN=date.escher.cc
 
 networks:
   traefik_proxy:
