@@ -2,53 +2,49 @@
 version: '3'
 
 services:
-#  framadate-db:
-#    image: mariadb:10.8
-#    container_name: Framdate-DB
-#    restart: unless-stopped
-#    volumes:
-#      - /etc/localtime:/etc/localtime:ro
-#      - /etc/timezone:/etc/timezone:ro
-#      - /var/docker/wordpress/database:/var/lib/mysql
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=sqlrootpass
-#      - MYSQL_DATABASE=framadate
-#      - MYSQL_USER=sqluser
-#      - MYSQL_PASSWORD=sqluserpass
-#      - MYSQL_INITDB_SKIP_TZINFO=1  # Behebt die bekannten Startprobleme
-#    networks:
-#      - default
-#      - traefik_proxy
+  framadate-db:
+    image: mariadb:10.8
+    container_name: framadate-DB
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/docker/framadate/database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=xxxxxxx
+      - MYSQL_DATABASE=framadate
+      - MYSQL_USER=xxxxxxx
+      - MYSQL_PASSWORD=xxxxxxx
+      - MYSQL_INITDB_SKIP_TZINFO=1  # Behebt die bekannten Startprobleme
 
   framadate:
     image: lefilament/framadate
     container_name: framadate
     restart: unless-stopped
+    volumes:
+      - ./config.php:/var/www/framadate/app/inc/config.php
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.framadate.entrypoints=websecure"
-      - "traefik.http.routers.framadate.rule=Host(`date.escher.cc`)"
+      - "traefik.http.routers.framadate.rule=Host(`sub.domain.tld`)"
       - "traefik.http.routers.framadate.tls=true"
       - "traefik.http.routers.framadate.tls.certresolver=default"
       - "traefik.http.routers.framadate.middlewares=secHeaders@file"
       - "traefik.http.services.framadate.loadbalancer.server.port=80"
-#    networks:
-#      - default
-#      - traefik_proxy
-
     environment:
-      - ADMIN_USER=admin
-      - ADMIN_PASSWORD=testpilot
-      - MYSQL_USER=framuser
-      - MYSQL_PASSWORD=frampass
+      - ADMIN_USER=xxxxxxx
+      - ADMIN_PASSWORD=xxxxxxx
+      - MYSQL_USER=xxxxxxx
+      - MYSQL_PASSWORD=xxxxxxx
       - MYSQL_DB=framadate
-      - MYSQL_HOST=192.168.96.2
+      - MYSQL_HOST=framadate-db
       - MYSQL_PORT=3306
-      - DOMAIN=date.escher.cc
+      - DOMAIN=sub.domain.tld
+    networks:
+      - traefik_proxy
+      - default
 
 networks:
   traefik_proxy:
     external:
       name: traefik_proxy
-  default:
-    driver: bridge
