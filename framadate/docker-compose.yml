@@ -2,20 +2,23 @@
 version: '3'
 
 services:
-  framadate-db:
-    image: mariadb:10.8
-    container_name: Framdate-DB
-    restart: unless-stopped
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /var/docker/wordpress/database:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=sqlrootpass
-      - MYSQL_DATABASE=framadate
-      - MYSQL_USER=sqluser
-      - MYSQL_PASSWORD=sqluserpass
-      - MYSQL_INITDB_SKIP_TZINFO=1  # Behebt die bekannten Startprobleme
+#  framadate-db:
+#    image: mariadb:10.8
+#    container_name: Framdate-DB
+#    restart: unless-stopped
+#    volumes:
+#      - /etc/localtime:/etc/localtime:ro
+#      - /etc/timezone:/etc/timezone:ro
+#      - /var/docker/wordpress/database:/var/lib/mysql
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=sqlrootpass
+#      - MYSQL_DATABASE=framadate
+#      - MYSQL_USER=sqluser
+#      - MYSQL_PASSWORD=sqluserpass
+#      - MYSQL_INITDB_SKIP_TZINFO=1  # Behebt die bekannten Startprobleme
+#    networks:
+#      - default
+#      - traefik_proxy
 
   framadate:
     image: lefilament/framadate
@@ -29,17 +32,17 @@ services:
       - "traefik.http.routers.framadate.tls.certresolver=default"
       - "traefik.http.routers.framadate.middlewares=secHeaders@file"
       - "traefik.http.services.framadate.loadbalancer.server.port=80"
-    networks:
-      - default
-      - traefik_proxy
+#    networks:
+#      - default
+#      - traefik_proxy
 
     environment:
       - ADMIN_USER=admin
       - ADMIN_PASSWORD=testpilot
-      - MYSQL_USER=sqluser
-      - MYSQL_PASSWORD=sqlrootpass
+      - MYSQL_USER=framuser
+      - MYSQL_PASSWORD=frampass
       - MYSQL_DB=framadate
-      - MYSQL_HOST=framadate-db
+      - MYSQL_HOST=192.168.96.2
       - MYSQL_PORT=3306
       - DOMAIN=date.escher.cc
 
