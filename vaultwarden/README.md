@@ -1,11 +1,8 @@
 # Vaultwarden
-Bitwarden_rs ist ein fork des beliebten Passwort Managers Bitwarden. Dieser Fork hat den Vorteil ohne schwere Microsoft SQL Server Instanz auzukommen.
-Daher besteht dieser Service nur aus einem Container und nicht auf einer vielzahl.
+It's a fork form Bitwarden. You don't need a MySQL-DB, 'cause we're using SQLite.
 
-# WICHTIG!
-Wenn ihr Probleme mit Bitwarden habt, bitte nicht im offiziellen Forum posten, sondern direkt beim [Entwickler](https://github.com/dani-garcia/vaultwarden)
+# Important!
+If you're facing issues, don't contact the Bitwarden-Devs, pls contact the Vaultwarden-Team (https://github.com/dani-garcia/vaultwarden)
 
-# Attachments herunterladen
-Mit der Standardkonfiguration kann man Attachments zwar hochladen & löschen, nicht aber herunterladen.
-Nachdem der Container das erste Mal gestartet wurde, sollte eine Konfigurationsdatei `config.json` im `/var/docker/bitwarden` Verzeichnis liegen.
-Diese muss mit *root* Rechten bearbeitet und der Eintrag `domain: http://localhost` durch die gewünschte domain erstetzt werden (z.B. `https://bitwarden.example.com`).
+# Container-Storage
+The data from your password-safe are stored within volumes (vw-data) inside the container.
