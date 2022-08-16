@@ -3,13 +3,14 @@ version: '3'
 
 services:
   bitwarden:
-    image: vaultwarden/server:1.25.1
+    image: vaultwarden/server:latest
     container_name: vaultwarden
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
       - /var/docker/bitwarden:/data
+      - vw-data:/data
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.vaultwarden.entrypoints=websecure"
@@ -20,6 +21,10 @@ services:
       - "traefik.http.services.vaultwarden.loadbalancer.server.port=80"
     networks:
       - traefik_proxy
+
+volumes:
+  vw-data:
+    external: true
 
 networks:
   traefik_proxy:
