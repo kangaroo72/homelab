@@ -6,3 +6,9 @@ If you're facing issues, don't contact the Bitwarden-Devs, pls contact the Vault
 
 # Container-Storage
 The data from your password-safe are stored within volumes (vw-data) inside the container.
+
+#Backup-Idea using Cronjob on Docker-Host
+
+```
+30 02 * * * root /usr/bin/docker run --rm -v vw-data:/data -v /path_to_your_backups:/backup alpine tar -czvf /backup/$(date +\%Y\%m\%d)_vaultwarden.tgz /data
+```
