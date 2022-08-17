@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+ aio-sql:
+    image: mariadb:10.8
+    container_name: aio-sql
+    command: --transaction-isolation=READ-COMMITTED --log-bin=ROW
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/docker/aio-sql/database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=*******
+      - MYSQL_INITDB_SKIP_TZINFO=1  # fixes known issue with the DB
+    networks:
+      - db-net
+
+networks:
+  db-net:
+    external:
+      name: db-net
