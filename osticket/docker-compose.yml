@@ -1,0 +1,33 @@
+---
+version: '3'
+
+services:
+  osticket:
+    image: devinsolutions/osticket
+    container_name: osticket
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.osticket.entrypoints=websecure"
+      - "traefik.http.routers.osticket.rule=Host(`sub.domain.told`)"
+      - "traefik.http.routers.osticket.tls=true"
+      - "traefik.http.routers.osticket.tls.certresolver=default"
+      - "traefik.http.routers.osticket.middlewares=secHeaders@file"
+      - "traefik.http.services.osticket.loadbalancer.server.port=80"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root-sql-password
+      - MYSQL_USER=ost_user
+      - MYSQL_PASSWORD=ost_pass
+      - MYSQL_DATABASE=hl_osticket
+      - MYSQL_HOST=aio-sql
+      - MYSQL_PORT=3306
+    networks:
+      - traefik_proxy
+      - db-net
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  db-net:
+    external:
+      name: db-net
