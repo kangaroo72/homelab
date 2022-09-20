@@ -15,7 +15,6 @@ services:
       - password=password  #Password for Collabora-Admin-Panel
       - "extra_params=--o:ssl.enable=false --o:ssl.termination=true --o:net.proto=IPv4"
     restart: unless-stopped
-
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.collabora-secure.entrypoints=websecure"
@@ -26,7 +25,6 @@ services:
       - "traefik.http.services.collabora.loadbalancer.server.port=9980"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.http.routers.collabora-secure.middlewares=secHeaders@file"
-
 networks:
   traefik_proxy:
     external:
