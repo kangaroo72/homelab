@@ -10,9 +10,9 @@ services:
     expose:
       - 9980
     environment:
-      - domain=cloud.domain.tld #provide your nextcloud-domain here
-      - username=admin     #Username for Collabora-Admin-Panel
-      - password=password  #Password for Collabora-Admin-Panel
+      - domain=${NEXTCLOUD_DOMAIN}                                      
+      - username=${COLLABORA_USERNAME}                                        
+      - password=${COLLABORA_PASSWORD}
       - "extra_params=--o:ssl.enable=false --o:ssl.termination=true --o:net.proto=IPv4"
     restart: unless-stopped
     labels:
