@@ -4,7 +4,7 @@ Collabora-Docker-Compose-File (tested with Nextcloud 24)
 
 Admin-URL= https://your.officedomain.tld/browser/dist/admin/admin.html
 
-# Ussage:
+# Usage:
 
 Before starting, customize the .env-file with your values.
 
