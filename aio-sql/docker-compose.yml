@@ -1,5 +1,4 @@
 version: '3.3'
-
 services:
  aio-sql:
     image: mariadb:10.8
@@ -15,7 +14,6 @@ services:
       - MYSQL_INITDB_SKIP_TZINFO=1  # fixes known issue with the DB
     networks:
       - db-net
-
 networks:
   db-net:
     external:
