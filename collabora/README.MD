@@ -8,4 +8,4 @@ Admin-URL= https://your.officedomain.tld/browser/dist/admin/admin.html
 
 Before starting, customize the .env-file with your values.
 
-The yml-file uses IPv4 to prevent problems with german Cable-Provider Vodafone.
+The yml-file uses IPv4 to prevent problems with german Cable-Provider Vodafone (yml-file line 16).
