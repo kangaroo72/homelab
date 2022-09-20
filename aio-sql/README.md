@@ -8,3 +8,7 @@ Like:
 [Wordpress](https://github.com/kangaroo72/home-lab/tree/main/wordpress)
 
 [Nextcloud](https://github.com/kangaroo72/home-lab/tree/main/nextcloud)
+
+# usage
+
+Before starting, change the root-password in Line 13
