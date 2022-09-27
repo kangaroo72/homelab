@@ -1,4 +1,5 @@
-# Snappymail (A Fork from Rainloop) based on the docker-image from kouinkouin
+# Snappymail (A fork from Rainloop)
+based on the docker-image from kouinkouin
 
 Before running the image, customize the .env-file corresponding your domain.
 
