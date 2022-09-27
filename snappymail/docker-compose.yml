@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  snappymail:
+    image: kouinkouin/snappymail:latest
+    container_name: snappymail
+    restart: always
+#    ports:
+#      - 7000:8888
+    volumes:
+      - ./data:/snappymail/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.snappymail.entrypoints=websecure"
+      - "traefik.http.routers.snappymail.rule=Host(`${SNAPPYMAIL_URL}`)"
+      - "traefik.http.routers.snappymail.tls=true"
+      - "traefik.http.routers.snappymail.tls.certresolver=default"
+      - "traefik.http.routers.snappymail.middlewares=secHeaders@file"
+      - "traefik.http.services.snappymail.loadbalancer.server.port=8888"
+    networks:
+      - traefik_proxy
+      - db-net
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  db-net:
+    external:
+      name: db-net
