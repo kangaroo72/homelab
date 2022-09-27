@@ -1,5 +1,7 @@
 # Snappymail (A Fork from Rainloop) based on the docker-image from kouinkouin
 
+Before running the image, customize the .env-file corresponding your domain.
+
 You can access snappymail by requesting to URLs
 
 https://mail.domain.tld (Standard-Access)
