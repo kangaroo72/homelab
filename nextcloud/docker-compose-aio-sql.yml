@@ -60,6 +60,8 @@ services:
     entrypoint: /cron.sh
     depends_on:
       - nc-redis
+    networks:
+      - aio-sql
 
 networks:
   traefik_proxy:
