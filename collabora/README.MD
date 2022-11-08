@@ -1,6 +1,6 @@
-# Collabora Office (Traefik 2) - last test: 2022-09-20
+# Collabora Office (Traefik 2) - last test: 2022-11-08
 
-Collabora-Docker-Compose-File (tested with Nextcloud 24)
+Collabora-Docker-Compose-File (tested with Nextcloud 25)
 
 Admin-URL= https://your.officedomain.tld/browser/dist/admin/admin.html
 
