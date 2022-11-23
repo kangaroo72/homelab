@@ -1,3 +1,5 @@
+Required app for usage = Nextcloud Office (actual 7.0.1). Maybe installed by default with Nextcloud Hub
+
 # Collabora Office (Traefik 2) - last test: 2022-11-08
 
 Collabora-Docker-Compose-File (tested with Nextcloud 25)
