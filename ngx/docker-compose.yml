@@ -1,0 +1,53 @@
+version: "3.4"
+services:
+  broker:
+    image: docker.io/library/redis:7
+    restart: unless-stopped
+    networks:
+      - default
+      - traefik_proxy
+    volumes:
+      - redisdata:/data
+  webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    restart: unless-stopped
+    depends_on:
+      - broker
+    ports:
+      - 8000:8000
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "-S", "--max-time", "2", "http://localhost:8000"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - data:/usr/src/paperless/data
+      - media:/usr/src/paperless/media
+      - ./export:/usr/src/paperless/export
+      - ./consume:/usr/src/paperless/consume
+    env_file: .env
+    environment:
+      PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_ADMIN_USER: admin
+      PAPERLESS_ADMIN_PASSWORD: admin
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ngx.entrypoints=websecure"
+      - "traefik.http.routers.ngx.rule=Host(`ngx.escher.cc`)"  # Domain anpassen
+      - "traefik.http.routers.ngx.tls=true"
+      - "traefik.http.routers.ngx.tls.certresolver=default"
+      - "traefik.http.routers.ngx.middlewares=secHeaders@file"
+      - "traefik.http.services.ngx.loadbalancer.server.port=80"
+    networks:
+      - default
+      - traefik_proxy
+
+volumes:
+  data:
+  media:
+  redisdata:
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
