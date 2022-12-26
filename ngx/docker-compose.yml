@@ -30,10 +30,11 @@ services:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_ADMIN_USER: admin
       PAPERLESS_ADMIN_PASSWORD: admin
+      PAPERLESS_URL: https://ngx.domain.tld # Domain anpassen
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ngx.entrypoints=websecure"
-      - "traefik.http.routers.ngx.rule=Host(`ngx.escher.cc`)"  # Domain anpassen
+      - "traefik.http.routers.ngx.rule=Host(`ngx.domain.tld`)"  # Domain anpassen
       - "traefik.http.routers.ngx.tls=true"
       - "traefik.http.routers.ngx.tls.certresolver=default"
       - "traefik.http.routers.ngx.middlewares=secHeaders@file"
