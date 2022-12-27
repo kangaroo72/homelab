@@ -61,7 +61,8 @@ services:
     depends_on:
       - nc-redis
     networks:
-      - aio-sql
+      - traefik_proxy
+      - db-net
 
 networks:
   traefik_proxy:
