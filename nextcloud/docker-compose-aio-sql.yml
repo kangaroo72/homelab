@@ -30,6 +30,8 @@ services:
       - APACHE_DISABLE_REWRITE_IP=1
       - TRUSTED_PROXIES=${TRUSTED_PROXIES}
       - OVERWRITEPROTOCOL=https
+      - PHP_MEMORY_LIMIT=10240M   # Upload-Größe anpassen. Default 512M
+      - PHP_UPLOAD_LIMIT=10240M   # Upload-Größe anpassen. Default 512M
     volumes:
       - /mnt/array/nextcloud:/var/www/html
       # - EXTERNES DATENVERZEICHNIS:/mnt/array/nextcloud
