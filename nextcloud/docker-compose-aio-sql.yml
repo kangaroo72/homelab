@@ -33,7 +33,8 @@ services:
       - PHP_MEMORY_LIMIT=10240M   # Upload-Größe anpassen. Default 512M
       - PHP_UPLOAD_LIMIT=10240M   # Upload-Größe anpassen. Default 512M
     volumes:
-      - /mnt/array/nextcloud:/var/www/html
+      - /mnt/array/nextcloud:/var/www/html   
+      - ./nextcloud-apache.conf:/etc/apache2/conf-enabled/nextcloud-apache.conf:ro
       # - EXTERNES DATENVERZEICHNIS:/mnt/array/nextcloud
 #    links:
 #      - aio-sql
