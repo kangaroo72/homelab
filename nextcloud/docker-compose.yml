@@ -42,6 +42,7 @@ services:
       - OVERWRITEPROTOCOL=https
     volumes:
       - /var/docker/nextcloud/app:/var/www/html
+      - ./nextcloud-apache.conf:/etc/apache2/conf-enabled/nextcloud-apache.conf:ro
       # - EXTERNES DATENVERZEICHNIS:/var/www/html/data
     links:
       - nextcloud-db
