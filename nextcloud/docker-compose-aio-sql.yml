@@ -44,8 +44,8 @@ volumes:
       # - EXTERNES DATENVERZEICHNIS:/mnt/array/nextcloud
 #    links:
 #      - aio-sql
-    external_links:
-      - traefik
+#    external_links:
+#      - traefik
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nextcloud.entrypoints=websecure"
