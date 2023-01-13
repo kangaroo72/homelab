@@ -54,8 +54,8 @@ services:
       # - EXTERNES DATENVERZEICHNIS:/var/www/html/data
     links:
       - nextcloud-db
-    external_links:
-      - traefik
+#    external_links:
+#      - traefik
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nextcloud.entrypoints=websecure"
