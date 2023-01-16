@@ -81,6 +81,9 @@ services:
       - nextcloud-db
       - nextcloud-redis
 
+volumes:
+  redis:
+
 networks:
   traefik_proxy:
     external: true
