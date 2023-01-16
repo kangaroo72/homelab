@@ -74,6 +74,9 @@ volumes:
       - traefik_proxy
       - db-net
 
+volumes:
+  redis:
+
 networks:
   traefik_proxy:
     external:
