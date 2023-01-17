@@ -12,3 +12,5 @@ The data from your password-safe are stored within volumes (vw-data) inside the 
 ```
 30 02 * * * root /usr/bin/docker run --rm -v vw-data:/data -v /path_to_your_backups:/backup alpine tar -czvf /backup/$(date +\%Y\%m\%d)_vaultwarden.tgz /data
 ```
+# Docker-Setup-info:
+Please set your own Traefik-Labels (here "vaultwarden") to your value
