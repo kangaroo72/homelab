@@ -14,3 +14,4 @@ The data from your password-safe are stored within volumes (vw-data) inside the 
 ```
 # Docker-Setup-info:
 Please set your own Traefik-Labels (here "vaultwarden") to your value
+In the .env-File, please set your admin-token and your domain
