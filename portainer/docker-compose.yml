@@ -14,7 +14,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portainer.entrypoints=websecure"
-      - "traefik.http.routers.portainer.rule=Host(`portainer.escher.cc`)"  # Domain anp>
+      - "traefik.http.routers.portainer.rule=Host(`portainer.yourdomain.tld`)"  # Domain anp>
       - "traefik.http.routers.portainer.tls=true"
       - "traefik.http.routers.portainer.tls.certresolver=default"
       - "traefik.http.routers.portainer.middlewares=secHeaders@file"
