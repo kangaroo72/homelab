@@ -30,6 +30,3 @@ sudo sh get-docker.sh
 ```
 Once docker is installed, go ahead with Traefik.
 
-```
-test
-```
