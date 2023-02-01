@@ -33,18 +33,17 @@ http:
           X-Frame-Options: "SAMEORIGIN"
         customFrameOptionsValue: "SAMEORIGIN"
 
-#  Beispiel für externe Dienste
-#   routers:
-#     router-1: # Tausche den Namen gegen etwas sprechendes aus
-#       entryPoints:
-#         - websecure
-#       rule: "Host(`example.com`)"
-#       service: "service-1" # Den Namen am besten ähnlich zu dem oben setzen
-#       tls:
-#         certresolver: default
-
+#  routers:
+#    home-assistant:
+#      service: home-assistant
+#      rule: "Host(`sub.domain.tld`)"
+#      entryPoints:
+#        - websecure
+#      tls:
+#        certResolver: default
+#
 #  services:
-#    service-1: # Ich verwende hier den gleiche Namen wie bei routers
+#    home-assistant:
 #      loadBalancer:
 #        servers:
-#          - url: "http://127.0.0.1" # Auf die richtige URL anpassen.
+#          - url: http://xxx.xxx.xxx.xxx:8123
