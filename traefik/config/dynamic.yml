@@ -36,7 +36,7 @@ http:
 #  routers:
 #    home-assistant:
 #      service: home-assistant
-#      rule: "Host(`sub.domain.tld`)"
+#      rule: "Host(`sub.domain.tld`)"   # Sub-Domain von Homeassistant
 #      entryPoints:
 #        - websecure
 #      tls:
@@ -46,4 +46,4 @@ http:
 #    home-assistant:
 #      loadBalancer:
 #        servers:
-#          - url: http://xxx.xxx.xxx.xxx:8123
+#          - url: http://xxx.xxx.xxx.xxx:8123   # IP-Adresse von Homeassistant
