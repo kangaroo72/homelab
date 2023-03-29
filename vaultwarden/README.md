@@ -16,12 +16,13 @@ The data from your password-safe are stored within volumes (vw-data) inside the 
 Please set your own Traefik-Labels (here "vaultwarden") to your value
 In the .env-File, please set your admin-token and your domain
 
-#Setup-Guide 2023-03-30
+# Setup-Guide 2023-03-30
 
 Line 14: Add your Argon2-Token
 
 Example:
-```echo -n "xxxxxxx" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4 | sed 's#\$#\$\$#g'
+```
+echo -n "xxxxxxx" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4 | sed 's#\$#\$\$#g'
 ´´´
 Change xxxxxx to your Admin-Panel-Password
 
