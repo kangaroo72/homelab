@@ -6,19 +6,16 @@ services:
     image: vaultwarden/server:latest
     container_name: vaultwarden
     restart: unless-stopped
-    environment:
-    - ADMIN_TOKEN=${ADMIN_TOKEN}
-    - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED}
-
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - /var/docker/bitwarden:/data
       - vw-data:/data
-    labels:
+    environment:
+    - ADMIN_TOKEN="YOUR-ARGON-TOKEN"
+labels:
       - "traefik.enable=true"
       - "traefik.http.routers.vaultwarden.entrypoints=websecure"
-      - "traefik.http.routers.vaultwarden.rule=Host(`${VAULTWARDEN_URL}`)"
+      - "traefik.http.routers.vaultwarden.rule=Host(`YOUR-DOMAIN`)"
       - "traefik.http.routers.vaultwarden.tls=true"
       - "traefik.http.routers.vaultwarden.tls.certresolver=default"
       - "traefik.http.routers.vaultwarden.middlewares=secHeaders@file"
