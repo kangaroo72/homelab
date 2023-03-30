@@ -23,5 +23,13 @@ docker volume create vw-data
 ```
 echo -n "xxxxxxx" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4 | sed 's#\$#\$\$#g'
 ```
-03. Paste the result in the .env-file
-04. Type in the Vaultwarden-Domain in the .env-file
+03. Paste the result in the .env-file (Line 1)
+
+04. Type in the Vaultwarden-Domain in the .env-file (Line 2)
+
+05. Fire up your Vaultwarden
+
+```
+docker compose up -d
+```
+
