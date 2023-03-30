@@ -24,7 +24,7 @@ echo -n "xxxxxxx" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 
 docker compose up -d
 ```
 
-#Urgent: Your Backup
+# Urgent: Your Backup
 
 The data from your password-safe are stored within volumes (vw-data) inside the container.
 It makes sense to setup a cronjob for backup:
