@@ -2,7 +2,7 @@
 It's a fork form Bitwarden. You don't need a MySQL-DB, 'cause we're using SQLite.
 
 # Important!
-If you're facing issues, don't contact the Bitwarden-Devs, pls contact the Vaultwarden-Team (https://github.com/dani-garcia/vaultwarden)
+If you're facing issues, **don't contact the Bitwarden-Devs**, pls contact the Vaultwarden-Team (https://github.com/dani-garcia/vaultwarden)
 
 # Todo's
 
@@ -34,6 +34,6 @@ It makes sense to setup a cronjob for backup:
 ```
 
 ## Not able to login into Admin-Panel??
-If you have used the Admin-Panel before w/o Argon-2-Token, your prior config will be used.
+If you have used the Admin-Panel before w/o Argon-2-Token, your **prior** config will be used.
 Add the Argon-2-Token the yml-file as mentioned, log into Admin-Panel with prior-password and overwrite there.
 That's it.
