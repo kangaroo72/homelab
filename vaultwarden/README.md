@@ -33,7 +33,7 @@ It makes sense to setup a cronjob for backup:
 30 02 * * * root /usr/bin/docker run --rm -v vw-data:/data -v /path_to_your_backups:/backup alpine tar -czvf /backup/$(date +\%Y\%m\%d)_vaultwarden.tgz /data
 ```
 
-Not able to login into Admin-Panel??
+## Not able to login into Admin-Panel??
 If you have used the Admin-Panel before w/o Argon-2-Token, your prior config will be used.
 Add the Argon-2-Token the yml-file as mentioned, log into Admin-Panel with prior-password and overwrite there.
 That's it.
