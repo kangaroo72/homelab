@@ -1,8 +1,10 @@
 # Vaultwarden
-It's a fork form Bitwarden. You don't need a MySQL-DB, 'cause we're using SQLite.
+Vaultwarden ist ein Fork von Bitwarden mit höchster Sicherheit und einem massiven Funktionsumfang.
+Andere Datenbanken lassen sich verwenden, aber wir setzen hier auf SQLite.
 
-# Important!
-If you're facing issues, **don't contact the Bitwarden-Devs**, pls contact the Vaultwarden-Team (https://github.com/dani-garcia/vaultwarden)
+# Wichtig
+Vaultwarden ist ein unabhängigs Projekt. Also wenn Supportanfragen auftauchen,
+richtet diese bitte *unbedingt* an das [Vaultwarden-Team](https://github.com/dani-garcia/vaultwarden}
 
 # Todo's
 
