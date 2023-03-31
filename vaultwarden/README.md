@@ -3,8 +3,7 @@ Vaultwarden ist ein Fork von Bitwarden mit höchster Sicherheit und einem massiv
 Andere Datenbanken lassen sich verwenden, aber wir setzen hier auf SQLite.
 
 # Wichtig
-Vaultwarden ist ein unabhängigs Projekt. Also wenn Supportanfragen auftauchen,
-richtet diese bitte **unbedingt** an das [Vaultwarden-Team](https://github.com/dani-garcia/vaultwarden).
+Vaultwarden ist ein unabhängigs Projekt. Also wenn Supportanfragen auftauchen, richtet diese bitte **unbedingt** an das [Vaultwarden-Team](https://github.com/dani-garcia/vaultwarden).
 
 # Anleitung
 
