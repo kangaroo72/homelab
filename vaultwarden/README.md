@@ -4,34 +4,29 @@ Andere Datenbanken lassen sich verwenden, aber wir setzen hier auf SQLite.
 
 # Wichtig
 Vaultwarden ist ein unabhängigs Projekt. Also wenn Supportanfragen auftauchen,
-richtet diese bitte *unbedingt* an das [Vaultwarden Team]([url](https://github.com/dani-garcia/vaultwarden))
+richtet diese bitte **unbedingt** an das [Vaultwarden-Team](https://github.com/dani-garcia/vaultwarden).
 
-https://github.com/dani-garcia/vaultwarden
+# Anleitung
 
-This site was built using [GitHup Pages](https://pages.github.com/).
-
-
-# Todo's
-
-01. Create your "vw-data" volume
+01. Volume "vw-data" erstellen
 ```
 docker volume create vw-data
 ```
-02. Create your Argon-2-Token
+02. Den Argon-2-Token erstellen
 ```
 echo -n "xxxxxxx" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4 | sed 's#\$#\$\$#g'
 ```
-03. Paste the result in the .env-file (Line 1)
+03. Den erstellten Argon-2-Token in das .env-file (Zeile 1) eintragen.
 
-04. Type in the Vaultwarden-Domain in the .env-file (Line 2)
+04. Deine Wunsch-Domain im .env-file (Zeile 2) eitnragen.
 
-05. Fire up your Vaultwarden
+05. Vaultwarden starten
 
 ```
 docker compose up -d
 ```
 
-# Urgent: Your Backup
+# Wichtig: Deine Datensicherung
 
 The data from your password-safe are stored within volumes (vw-data) inside the container.
 It makes sense to setup a cronjob for backup:
