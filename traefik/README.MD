@@ -15,6 +15,10 @@ Um Traefik mit meinen Dateien nutzen zu können muss folgendes durchgeführt wer
 ```bash
 docker network create traefik_proxy
 ```
+## Arbeitsverzeichnis für Traefik anlegen
+```
+mkdir -p ~/homelab/traefik
+```
 
 ## ACME Verzeichnis
 Traefik speichert alle notwendigen Informationen zu den Zertifikaten als JSON im ACME Verzeichnis. Dieses Verzeichnis benötigt besondere Rechte.
