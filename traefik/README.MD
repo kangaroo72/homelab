@@ -19,8 +19,7 @@ docker network create traefik_proxy
 ```
 mkdir -p ~/homelab/traefik
 ```
-
-## ACME Verzeichnis
+## Traefik-Repository klonen
 Traefik speichert alle notwendigen Informationen zu den Zertifikaten als JSON im ACME Verzeichnis. Dieses Verzeichnis benötigt besondere Rechte.
 
 ```bash
