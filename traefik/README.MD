@@ -25,9 +25,19 @@ sudo apt install apache2-utils -y
 ```
 Jetzt mit folgendem Kommando die Zugangsdaten für Traefik festlegen
 ```
-echo $(htpasswd -nbB <USER> "<PASS>") | sed -e s/\\$/\\$\\$/g
+echo $(htpasswd -nbB benutzer "passwort") | sed -e s/\\$/\\$\\$/g
 ```
-USER & PASS bitte gegen eure Daten austauschen
+Ein Beispiel sieht dann für micky maus so aus:
+```
+micky:$$2y$$05$$oxXq18YikZO/bZBvZb2DNOTGXOgAqEORk9nMvJ8fGEdnwIUHnaT9i
+```
+Diesen Token müsst ihr in der docker-compose.yml angeben.
+
+Beispiel:
+```
+      - "traefik.http.middlewares.auth.basicauth.users=micky:$$2y$$05$$oxXq18YikZO/bZBvZb2DNOTGXOgAqEORk9nMvJ8fGEdnwIUHnaT9i"
+```
+Benutzer & Passwort bitte gegen eure Daten austauschen
 
 ## Traefik-Repository klonen
 Traefik speichert alle notwendigen Informationen zu den Zertifikaten als JSON im ACME Verzeichnis. Dieses Verzeichnis benötigt besondere Rechte.
