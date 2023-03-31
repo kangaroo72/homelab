@@ -19,6 +19,11 @@ docker network create traefik_proxy
 ```
 mkdir -p ~/homelab/traefik
 ```
+## htpasswd installieren und Zugangsdaten einrichten
+````bash
+sudo apt install apache2-utils -y
+````
+
 ## Traefik-Repository klonen
 Traefik speichert alle notwendigen Informationen zu den Zertifikaten als JSON im ACME Verzeichnis. Dieses Verzeichnis benötigt besondere Rechte.
 
@@ -30,9 +35,7 @@ chmod 600 acme.json
 # Dashboard
 Um das Dashboard nutzen zu können muss die Sektion "label" in der Docker-Compose Datei auskommentiert werden. Es ist darauf zu achten, dass die Einrückungen stimmen; dazu kann sich an den anderen Sektionen orientiert werden. Anschließend muss man noch Benutzer
 und Passwort für das Dashboard erstellen. Hierzu ist ````apache2-utils```` erforderlich.
-````bash
-sudo apt install apache2-utils -y
-````
+
 
 Nun erstellen wir mit folgendem Befehl die Benutzer/Passwort Kombination (die spitzen Klammern <> sind ebenfalls zu ersetzen):
 
