@@ -8,13 +8,19 @@ Die Konfiguration für Traefik zieht die Sicherheitsanforderungen ziemlich an. H
 Es werden nur aktuelle Browser unterstützt! Sollte das nicht gewollt sein, muss die
 providers.yml Datei angepasst werden.
 
-# Vorbereitung
+# Vorbereitungen
 Um Traefik mit meinen Dateien nutzen zu können muss folgendes durchgeführt werden
 
 ## Netzwerk anlegen
 ```bash
 docker network create traefik_proxy
 ```
+## Pakete runterladen
+```
+sudo apt install apache2-utils -y
+sudo apt install subversion -y
+```
+
 ## Arbeitsverzeichnis für Traefik anlegen
 ```
 mkdir -p ~/homelab/traefik
