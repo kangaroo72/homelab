@@ -21,9 +21,9 @@ sudo apt install apache2-utils -y
 sudo apt install subversion -y
 ```
 
-## Arbeitsverzeichnis für Traefik anlegen
+## Arbeitsverzeichnis für Homelab anlegen
 ```
-mkdir -p ~/homelab/traefik
+mkdir -p ~/homelab/homelab
 ```
 ## htpasswd installieren und Zugangsdaten einrichten
 ```
