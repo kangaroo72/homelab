@@ -23,7 +23,7 @@ sudo apt install subversion -y
 
 ## Arbeitsverzeichnis für Homelab anlegen
 ```
-mkdir -p ~/homelab/homelab
+mkdir ~/homelab
 ```
 ## htpasswd installieren und Zugangsdaten einrichten
 ```
