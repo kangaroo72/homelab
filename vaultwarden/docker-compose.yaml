@@ -11,8 +11,8 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - vw-data:/data
     environment:
-    - ADMIN_TOKEN=${ADMIN_TOKEN}
-labels:
+      - ADMIN_TOKEN=${ADMIN_TOKEN}
+    labels:
       - "traefik.enable=true"
       - "traefik.http.routers.vaultwarden.entrypoints=websecure"
       - "traefik.http.routers.vaultwarden.rule=Host(`${VAULTWARDEN_URL}`)"
