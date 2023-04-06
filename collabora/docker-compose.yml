@@ -27,7 +27,6 @@ services:
       - "traefik.http.routers.collabora-secure.middlewares=secHeaders@file"
 networks:
   traefik_proxy:
-    external:
-      name: traefik_proxy
+    external: true
   default:
     driver: bridge
