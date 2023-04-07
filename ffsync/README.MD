@@ -18,3 +18,13 @@ und tragt das in der .env-Datei ein.
 Jetzt noch die Domain in der .env-Datei eintragen und dann ffsync starten
 
 ```docker compose up -d```
+
+## Konfiguration des Rechners
+
+Ihr benötigt ein Mozilla-Konto. Habt ihr noch keins, könnt ihr das [hier](https://accounts.firefox.com/) anlegen.
+
+Im Firefox gebt ihr in der Addressleite folgendes ein:
+
+```about: config```
+
+und bestätigt die Warnung.
