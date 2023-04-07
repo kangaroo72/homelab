@@ -25,6 +25,14 @@ Ihr benötigt ein Mozilla-Konto. Habt ihr noch keins, könnt ihr das [hier](http
 
 Im Firefox gebt ihr in der Addressleite folgendes ein:
 
-```about: config```
+```about:config```
 
 und bestätigt die Warnung.
+
+Sucht hier nach "sync". Ihr werdet den Token "Identity.sync.tokenserver.url" finden. Diesen bitte doppelklicken und folgendes eintragen.
+
+```https:/sync.domain.tld/token/1.0/sync/1.5```
+
+Natürlich ersetzt ihr sync.domain.tld durch eure gewählte Domain.
+
+Melde euch jetzt im Firefox mit eurem Konto an. Die Synchronisation wird funktionieren.
