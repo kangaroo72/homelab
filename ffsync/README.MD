@@ -7,4 +7,6 @@ Damit können plattformübergreifend Bookmarks, AddOns, Passwörter, etc. von Fi
 
 ```create volume ffsync```
 
-test
+```svn checkout https://github.com/kangaroo72/homelab.git/trunk/ffsync```
+
+
