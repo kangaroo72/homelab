@@ -4,7 +4,7 @@ services:
 
   ffsync:
     image: "crazymax/firefox-syncserver:latest"
-    container_name: "fsync"
+    container_name: "ffsync"
     restart: unless-stopped
     volumes:
       - "ff-syncserver:/data"
