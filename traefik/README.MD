@@ -1,3 +1,5 @@
+# Traefik ist ein Proxy und sollte als allererstes installiert werden. Außerdem kümmert sich Traefik automatisch um die SSL-Zertifikate.
+
 01. Docker-Netzwerk anlegen
 
 ```docker network create traefik_proxy```
