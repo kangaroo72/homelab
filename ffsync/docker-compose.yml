@@ -1,0 +1,35 @@
+version: "3.3"
+
+services:
+
+  ffsync:
+    image: "crazymax/firefox-syncserver:latest"
+    container_name: "fsync"
+    restart: unless-stopped
+    volumes:
+      - "ff-syncserver:/data"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      - TZ=Europe/Berlin
+      - FF_SYNCSERVER_FORCE_WSGI_ENVIRON=true
+      - FF_SYNCSERVER_FORWARDED_ALLOW_IPS=*
+      - FF_SYNCSERVER_PUBLIC_URL=${FFSYNC_DOMAIN}
+      - FF_SYNCSERVER_SECRET=f4c4a25d2d4f95fae9ec53811c415ee6732a0953
+      - PORT=4500
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fsync.rule=Host(`${FFSYNC_DOMAIN}`)"
+      - "traefik.http.routers.fsync.tls=true"
+      - "traefik.http.routers.fsync.entrypoints=websecure"
+      - "traefik.http.routers.fsync.tls.certresolver=default"
+      - "traefik.http.services.fsync.loadbalancer.server.port=5000"
+    networks:
+      - traefik_proxy
+
+volumes:
+  ffsync:
+    external: true
+
+networks:
+  traefik_proxy:
+    external: true
