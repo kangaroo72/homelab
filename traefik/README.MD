@@ -4,8 +4,8 @@
 
 02. Pakete installieren
 
-sudo apt install apache2-utils -y
-sudo apt install subversion -y
+```sudo apt install apache2-utils -y
+sudo apt install subversion -y```
 
 03. Arbeitsverzeichnis für Homelab anlegen
 
