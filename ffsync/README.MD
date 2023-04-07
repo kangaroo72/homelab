@@ -5,7 +5,9 @@ Damit können plattformübergreifend Bookmarks, AddOns, Passwörter, etc. von Fi
 
 ## Installation
 
-```create volume ffsync```
+```sudo apt install subversion -y```
+
+```docker volume create ffsync```
 
 ```svn checkout https://github.com/kangaroo72/homelab.git/trunk/ffsync```
 
