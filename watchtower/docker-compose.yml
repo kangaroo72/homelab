@@ -1,0 +1,16 @@
+version: "3"
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: dockup
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - WATCHTOWER_NOTIFICATIONS_HOSTNAME=HOSTNAME-DES-ZU-ÜBERWACHENDEN-SYSTEMS
+      - WATCHTOWER_NOTIFICATIONS_LEVEL=info
+      - WATCHTOWER_NOTIFICATION_URL=smtp://smtp-benutzername:smtp-passwort@mailserver:port/?fromName=NameDesAbsenders&from=absenderemail&to=empfängeremail1,empfängeremail2
+      - WATCHTOWER_NOTIFICATION_EMAIL_SUBJECTTAG=Info-Mail
+      - WATCHTOWER_SCHEDULE=0 0 4 * * *
+      - WATCHTOWER_TIMEOUT=30s
+      - WATCHTOWER_INCLUDE_RESTARTING=true
