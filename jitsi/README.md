@@ -30,4 +30,5 @@ wget https://raw.githubusercontent.com/kangaroo72/homelab/main/jitsi/docker-comp
 
 Todos:
 
-In der .env-Datei eure Puplic-URL anpassen
+1. In der docker-compose.yml eure Domain anpassen
+2. In der .env die PUBLIC_URL anpassen
