@@ -22,6 +22,7 @@ mkdir ~/homelab
 04. Traefik-Verzeichnis aus GIT klonen
 
 ```
+cd traefik
 svn checkout https://github.com/kangaroo72/homelab.git/trunk/traefik
 ```
 
