@@ -17,13 +17,12 @@ sudo apt install subversion -y
 
 ```
 mkdir ~/homelab
-mkdir ~/homelab/traefik
 ```
 
 04. Traefik-Verzeichnis aus GIT klonen
 
 ```
-cd ~/homelab/traefik
+cd ~/homelab
 svn checkout https://github.com/kangaroo72/homelab.git/trunk/traefik
 ```
 
