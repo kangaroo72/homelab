@@ -1,6 +1,7 @@
 # Vaultwarden
 Vaultwarden ist ein Fork von Bitwarden mit höchster Sicherheit und einem massiven Funktionsumfang.
 Andere Datenbanken lassen sich verwenden, aber wir setzen hier auf SQLite.
+Zuletzt getestet mit Version 1.29.1 am 01.08.2023
 
 # Wichtig
 Vaultwarden ist ein unabhängigs Projekt. Also wenn Supportanfragen auftauchen, richtet diese bitte **unbedingt** an das [Vaultwarden-Team](https://github.com/dani-garcia/vaultwarden).
