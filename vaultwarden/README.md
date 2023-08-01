@@ -11,15 +11,19 @@ Vaultwarden ist ein unabhängigs Projekt. Also wenn Supportanfragen auftauchen, 
 ```
 docker volume create vw-data
 ```
-02. Den Argon-2-Token erstellen (für das Admin-Passwort) xxxxxxxx = Das Admin-Passwort im Klartext (wird in diesem Prozess verschlüsselt)
+02. argon2 installieren (Verschlüsselungspaket)
+```
+sudo apt install argon2 -y
+```
+03. Den Argon-2-Token erstellen (für das Admin-Passwort) xxxxxxxx = Das Admin-Passwort im Klartext (wird in diesem Prozess verschlüsselt)
 ```
 echo -n "xxxxxxx" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4 | sed 's#\$#\$\$#g'
 ```
-03. Den erstellten Argon-2-Token in das .env-file (Zeile 1) eintragen.
+04. Den erstellten Argon-2-Token in das .env-file (Zeile 1) eintragen.
 
-04. Deine Wunsch-Domain im .env-file (Zeile 2) eitnragen.
+05. Deine Wunsch-Domain im .env-file (Zeile 2) eitnragen.
 
-05. Vaultwarden starten
+06. Vaultwarden starten
 
 ```
 docker compose up -d
