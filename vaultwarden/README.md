@@ -20,7 +20,8 @@ sudo apt install argon2 -y
 cd ~/homelab
 svn checkout https://github.com/kangaroo72/homelab.git/trunk/vaultwarden
 ```
-03. Den Argon-2-Token erstellen (für das Admin-Passwort) xxxxxxxx = Das Admin-Passwort im Klartext (wird in diesem Prozess verschlüsselt)
+03. Den Argon-2-Token erstellen (für das Admin-Passwort)
+xxxxxxxx = Das Admin-Passwort im Klartext (wird in diesem Prozess verschlüsselt)
 ```
 echo -n "xxxxxxx" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4 | sed 's#\$#\$\$#g'
 ```
