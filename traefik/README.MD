@@ -26,9 +26,11 @@ cd ~/homelab
 svn checkout https://github.com/kangaroo72/homelab.git/trunk/traefik
 ```
 
-05. Berechtiung anpassen
+05. Korrektur der acme.json + Berechtiung anpassen
 
 ```
+rm ~/homelab/traefik/config/ACME/acme.json
+touch ~/homelab/traefik/config/ACME/acme.json
 chmod 600 ~/homelab/traefik/config/ACME/acme.json
 ```
 
