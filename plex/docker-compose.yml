@@ -5,25 +5,29 @@ services:
     container_name: plex
     ports:
       # Plex DLNA Server
+#      - 32400:32400/tcp
       - 1900:1900/udp
       - 32410:32410/udp
       - 32412:32412/udp
       - 32413:32413/udp
       - 32414:32414/udp
     labels:
-      - plex
+#      - plex
       - "traefik.enable=true"
       - "traefik.http.routers.plex.rule=Host(`plex.escher.cc`)"
       - "traefik.http.routers.plex.entrypoints=websecure"
-      - "traefik.http.routers.plex.tls.certresolver=myresolver"
+      - "traefik.http.routers.plex.tls.certresolver=default"
       - "traefik.http.services.plex.loadbalancer.server.port=32400"
       - "traefik.frontend.rule=Host:traefik.domain"
       - "traefik.http.routers.plex.middlewares=middlewares-rate-limit@file,middlewares-ipwhilelist@file" 
+    networks:
+      - traefik_proxy
     environment:
       - PLEX_UID=1000
       - PLEX_GID=1000
       - UMASK=022 #optional
-      - PLEX_CLAIM=claim-y9GGhb5f9whbvTXigtk-
+      - PLEX_CLAIM=claim-7Ga1sAii39mutnCYsBHg
+      - ADVERTISE_IP=https://plex.escher.cc:443
     restart: unless-stopped
     volumes:
       - cifs-plex:/config
@@ -36,4 +40,8 @@ volumes:
   cifs-movies:
     external: true
   cifs-tv:
+    external: true
+
+networks:
+  traefik_proxy:
     external: true
