@@ -20,20 +20,16 @@ docker volume create vw-data
 cd ~/homelab
 svn checkout https://github.com/kangaroo72/homelab.git/trunk/vaultwarden
 ```
-03. Deine Wunsch-Domain im .env-file (Zeile 2) eitnragen.
-
-
-04. Vaultwarden starten
-
+03. Deine Wunsch-Domain im .env-file (Zeile 2) eitnragen und Vaultwarden starten
 ```
 docker compose up -d
 ```
 
 # Wichtig: Deine Datensicherung
 
-The data from your password-safe are stored within volumes (vw-data) inside the container.
-It makes sense to setup a cronjob for backup:
-
+Deine Daten von Vaultwarden befinden sich im Volume vw-data.
+Es macht durchaus Sinn, dieses mittels eines Cronjobs zu sichern.
+Hier ein Beispiel...
 ```
 30 02 * * * root /usr/bin/docker run --rm -v vw-data:/data -v /path_to_your_backups:/backup alpine tar -czvf /backup/$(date +\%Y\%m\%d)_vaultwarden.tgz /data
 ```
