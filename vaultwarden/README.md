@@ -3,6 +3,9 @@ Vaultwarden ist ein Fork von Bitwarden mit höchster Sicherheit und einem massiv
 Andere Datenbanken lassen sich verwenden, aber wir setzen hier auf SQLite.
 Zuletzt getestet mit Version 1.29.1 am 01.08.2023
 
+Das Admin-Portal erreicht ihr durch aufruf von https://your.domain.tld/admin
+Das Default-Passwort lautet "Vault-Admin"
+
 # Wichtig
 Vaultwarden ist ein unabhängigs Projekt. Also wenn Supportanfragen auftauchen, richtet diese bitte **unbedingt** an das [Vaultwarden-Team](https://github.com/dani-garcia/vaultwarden).
 
@@ -12,25 +15,14 @@ Vaultwarden ist ein unabhängigs Projekt. Also wenn Supportanfragen auftauchen, 
 ```
 docker volume create vw-data
 ```
-02. argon2 installieren (Verschlüsselungspaket)
-```
-sudo apt install argon2 -y
-```
-03. Vaultwarden-Verzeichnis aus GIT klonen
+02. Vaultwarden-Verzeichnis aus GIT klonen
 ```
 cd ~/homelab
 svn checkout https://github.com/kangaroo72/homelab.git/trunk/vaultwarden
 ```
-04. Den Argon-2-Token erstellen (für das Admin-Passwort)
-xxxxxxxx = Das Admin-Passwort im Klartext (wird in diesem Prozess verschlüsselt)
-```
-echo -n "xxxxxxx" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4 | sed 's#\$#\$\$#g'
-```
-05. Den erstellten Argon-2-Token in das .env-file (Zeile 1) eintragen.
+03. Deine Wunsch-Domain im .env-file (Zeile 2) eitnragen.
 
-06. Deine Wunsch-Domain im .env-file (Zeile 2) eitnragen.
-
-07. Vaultwarden starten
+04. Vaultwarden starten
 
 ```
 docker compose up -d
@@ -45,7 +37,3 @@ It makes sense to setup a cronjob for backup:
 30 02 * * * root /usr/bin/docker run --rm -v vw-data:/data -v /path_to_your_backups:/backup alpine tar -czvf /backup/$(date +\%Y\%m\%d)_vaultwarden.tgz /data
 ```
 
-## Not able to login into Admin-Panel??
-If you have used the Admin-Panel before w/o Argon-2-Token, your **prior** config will be used.
-Add the Argon-2-Token the yml-file as mentioned, log into Admin-Panel with prior-password and overwrite there.
-That's it.
