@@ -8,7 +8,7 @@ Das Admin-Portal erreicht ihr durch aufruf von https://your.domain.tld/admin
 Das Default-Passwort lautet "Vault-Admin"
 
 # Wichtig
-Vaultwarden ist ein unabhängigs Projekt. Also wenn Supportanfragen auftauchen, richtet diese bitte **unbedingt** an das [Vaultwarden-Team](https://github.com/dani-garcia/vaultwarden).
+Vaultwarden ist ein unabhängiges Projekt. Also wenn Supportanfragen auftauchen, richtet diese bitte **unbedingt** an das [Vaultwarden-Team](https://github.com/dani-garcia/vaultwarden).
 
 # Anleitung
 
