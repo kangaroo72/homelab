@@ -4,6 +4,7 @@ Andere Datenbanken lassen sich verwenden, aber wir setzen hier auf SQLite.
 Zuletzt getestet mit Version 1.29.1 am 01.08.2023
 
 Das Admin-Portal erreicht ihr durch aufruf von https://your.domain.tld/admin
+
 Das Default-Passwort lautet "Vault-Admin"
 
 # Wichtig
