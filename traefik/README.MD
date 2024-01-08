@@ -37,7 +37,7 @@ chmod 600 ~/homelab/traefik/config/ACME/acme.json
 
 06. Domain anpassen
 
-In der docker-compose.yml passt ihr bitte eure domain an (traefik.domain.tld)
+In der docker-compose.yml passt ihr bitte eure domain an (traefik.example.com)
 
 07. Zugangsdaten für Traefik definieren
 
