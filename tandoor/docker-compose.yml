@@ -1,0 +1,54 @@
+version: "3"
+services:
+  db_recipes:
+    restart: always
+    image: postgres:11-alpine
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    networks:
+      - default
+
+  web_recipes:
+    restart: always
+    image: vabene1111/recipes
+    env_file:
+      - ./.env
+    volumes:
+      - staticfiles:/opt/recipes/staticfiles
+      - nginx_config:/opt/recipes/nginx/conf.d
+      - ./mediafiles:/opt/recipes/mediafiles
+    depends_on:
+      - db_recipes
+    networks:
+      - default
+
+  nginx_recipes:
+    image: nginx:mainline-alpine
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - nginx_config:/etc/nginx/conf.d:ro
+      - staticfiles:/static:ro
+      - ./mediafiles:/media:ro
+    labels: # traefik example labels
+      - "traefik.enable=true"
+      - "traefik.http.routers.recipes.rule=Host(`sub.domain.tld`)"
+      - "traefik.http.routers.recipes.entrypoints=websecure" # your https endpoint
+      - "traefik.http.routers.recipes.tls.certresolver=default" # your cert resolver
+    depends_on:
+      - web_recipes
+    networks:
+      - default
+      - traefik_proxy
+
+networks:
+  default:
+  traefik_proxy: # This is your external traefik network
+    external: true
+
+volumes:
+  nginx_config:
+  staticfiles:
