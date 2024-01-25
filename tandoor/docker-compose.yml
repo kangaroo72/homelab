@@ -2,7 +2,7 @@ version: "3"
 services:
   db_recipes:
     restart: always
-    image: postgres:11-alpine
+    image: postgres:15-alpine
     volumes:
       - ./postgresql:/var/lib/postgresql/data
     env_file:
@@ -36,6 +36,8 @@ services:
     labels: # traefik example labels
       - "traefik.enable=true"
       - "traefik.http.routers.recipes.rule=Host(`sub.domain.tld`)"
+      - "traefik.http.routers.recipes.tls=true"
+      - "traefik.http.routers.recipes.middlewares=secHeaders@file"
       - "traefik.http.routers.recipes.entrypoints=websecure" # your https endpoint
       - "traefik.http.routers.recipes.tls.certresolver=default" # your cert resolver
     depends_on:
