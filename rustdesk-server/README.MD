@@ -12,5 +12,6 @@ Bevor ihr den Docker-Container starten könnt, habt ihr folgende Todos:
 
 
 Solltet ihr später mal eure Server-Version auslesen wollen, gelingt diese über
-```docker exec hbbr hbbr -V
+```
+docker exec hbbr hbbr -V
 ```
