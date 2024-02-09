@@ -10,6 +10,7 @@ services:
       - redisdata:/data
   webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    entrypoint: sh -c "apt update && apt install -y libzbar0 && /sbin/docker-entrypoint.sh /usr/local/bin/paperless_cmd.sh"
     restart: unless-stopped
     depends_on:
       - broker
@@ -50,5 +51,4 @@ volumes:
 
 networks:
   traefik_proxy:
-    external:
-      name: traefik_proxy
+    external: true
