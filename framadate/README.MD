@@ -1,8 +1,8 @@
 Framadate ist das  ultimative Tool, um gemeinsame Termine oder Umfragen abzustimmen.
-
+```
 mkdir -p ~/homelab/framadate
 cd ~/homelab/framadate
-
+```
 hier legt ihr die docker-compose.yml und die config.php aus dem Repository rein.
 
 Angepasst werden muss in der docker-compose.yml
