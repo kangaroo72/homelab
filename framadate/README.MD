@@ -3,13 +3,15 @@ Framadate ist das  ultimative Tool, um gemeinsame Termine oder Umfragen abzustim
 mkdir -p ~/homelab/framadate
 cd ~/homelab/framadate
 ```
-hier legt ihr die docker-compose.yml und die config.php aus dem Repository rein.
+hier legt ihr die docker-compose.yml, die .env und die config.php aus dem Repository rein.
+In der .env-Datei müsst ihr die eingegeben Werte nach euren Wünschen anpassen.
+```
+MYSQL_ROOT_PASS=sql_root_passwort
+MYSQL_DB=sql_datenbank
+MYSQL_USER=sql_user
+MYSQL_PASS=sql_pass
+ADMIN_USER=framdateuser
+ADMIN_PASS=framadatepass
+DOMAIN=sub.deinedomain.tld
+```
 
-Angepasst werden muss in der docker-compose.yml
-
-MYSQL_ROOT_PASSWORD
-MSQL_DATABASE
-MYSQL_USER
-MYSQL_PASSWORD
-ADMIN_USER
-ADMIN_PASSWORD
