@@ -11,10 +11,10 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /var/docker/framadate/database:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=xxxxxxx
-      - MYSQL_DATABASE=framadate
-      - MYSQL_USER=xxxxxxx
-      - MYSQL_PASSWORD=xxxxxxx
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASS}
+      - MYSQL_DATABASE=${MYSQL_DB}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASS}
       - MYSQL_INITDB_SKIP_TZINFO=1  # Behebt die bekannten Startprobleme
 
   framadate:
@@ -26,20 +26,20 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.framadate.entrypoints=websecure"
-      - "traefik.http.routers.framadate.rule=Host(`sub.domain.tld`)"
+      - "traefik.http.routers.framadate.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.framadate.tls=true"
       - "traefik.http.routers.framadate.tls.certresolver=default"
       - "traefik.http.routers.framadate.middlewares=secHeaders@file"
       - "traefik.http.services.framadate.loadbalancer.server.port=80"
     environment:
-      - ADMIN_USER=xxxxxxx
-      - ADMIN_PASSWORD=xxxxxxx
-      - MYSQL_USER=xxxxxxx
-      - MYSQL_PASSWORD=xxxxxxx
-      - MYSQL_DB=framadate
+      - ADMIN_USER=${ADMIN_USER}
+      - ADMIN_PASSWORD=${ADMIN_PASS}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASS}
+      - MYSQL_DB=${MYSQL_DB}
       - MYSQL_HOST=framadate-db
       - MYSQL_PORT=3306
-      - DOMAIN=sub.domain.tld
+      - DOMAIN=${DOMAIN}
     networks:
       - traefik_proxy
       - default
