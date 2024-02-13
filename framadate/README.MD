@@ -1,4 +1,5 @@
 Framadate ist das  ultimative Tool, um gemeinsame Termine oder Umfragen abzustimmen.
+Diese Variante basiert auf Docker Compose. Traefik muss als Proxy ebenfalls eingerichtet sein.
 ```
 mkdir -p ~/homelab/framadate
 cd ~/homelab/framadate
