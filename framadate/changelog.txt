@@ -1,0 +1,4 @@
+2024-02-15
+
+Changelog hinzugefügt
+.env-File mit Variablen hinzufügt und docker-compose.yml entsprechend angepasst
