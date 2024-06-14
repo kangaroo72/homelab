@@ -36,7 +36,7 @@ http:
 #  routers:
 #    home-assistant:
 #      service: home-assistant
-#      rule: "Host(`sub.domain.tld`)"   # Sub-Domain von Homeassistant
+#      rule: "Host(`sub.domain.tld`)"   # Sub-Domain von Homeassistant + trusted_proxies in HA setzen
 #      entryPoints:
 #        - websecure
 #      tls:
