@@ -1,5 +1,4 @@
----
-version: '3.7'
+
 services:
   mozilla-sync:
     container_name: mozilla-sync
