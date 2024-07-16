@@ -21,7 +21,7 @@
 // If this is unset or empty, the servername is determined automatically.
 // You *have to set this* if you are running Framadate behind a reverse proxy.
 
-const APP_URL = 'sub.domain.tld';
+const APP_URL = 'your.framadate.domain';
 
 // const FORCE_HTTPS = false;
 
@@ -32,25 +32,25 @@ const NOMAPPLICATION = 'Framadate';
 const ADRESSEMAILADMIN = 'xxxxxxx';
 
 // Email for automatic responses (you should set it to "no-reply")
-const ADRESSEMAILREPONSEAUTO = '';
+const ADRESSEMAILREPONSEAUTO = 'no-reply';
 
 // Database driver
 const DB_DRIVER = 'pdo_mysql';
 
 // Database name
-const DB_NAME = 'framadate';
+const DB_NAME = 'your-db-name';
 
 // Database host
-const DB_HOST = 'framadate-db';
+const DB_HOST = 'your-db-host';
 
 // Database port
 const DB_PORT = '3306';
 
 // Database user
-const DB_USER = 'xxxxxxx';
+const DB_USER = 'your-db-user';
 
 // Database password
-const DB_PASSWORD = 'xxxxxxx';
+const DB_PASSWORD = 'your-db-password';
 
 // Table name prefix
 const TABLENAME_PREFIX = 'fd_';
@@ -112,8 +112,8 @@ $config = [
     'smtp_options' => [
         'host' => 'your.smtpserver.com',   // SMTP server (you could add many servers (main and backup for example) : use ";" like separator
         'auth' => true,                    // Enable SMTP authentication
-        'username' => 'xxxxxxx',                   // SMTP username
-        'password' => 'xxxxxxx',                   // SMTP password
+        'username' => 'your-smtp-user',                   // SMTP username
+        'password' => 'your-smtp-pass',                   // SMTP password
         'secure' => 'tls',                     // Enable encryption (false, tls or ssl)
         'port' => 587,                       // TCP port to connect to
     ],
