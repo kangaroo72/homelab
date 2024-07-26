@@ -9,7 +9,9 @@ services:
     expose:
       - 9980
     environment:
-      - domain=${NEXTCLOUD_DOMAIN}
+#      - domain=${NEXTCLOUD_DOMAIN} # uncomment for single-host-use
+#      - aliasgroup1=${ALIASGROUP1} # uncomment for multiple-host-use
+#      - aliasgroup2=${ALIASGROUP2} # uncomment for multiple-host-use
       - username=${COLLABORA_USERNAME}
       - password=${COLLABORA_PASSWORD}
       - "extra_params=--o:ssl.enable=false --o:ssl.termination=true --o:net.proto=IPv4"
