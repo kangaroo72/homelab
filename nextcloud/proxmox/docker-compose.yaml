@@ -1,0 +1,72 @@
+services:
+  postgres-db:
+    image: postgres
+    container_name: nextcloud-db
+    restart: unless-stopped
+    volumes:
+      - /postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  nextcloud-redis:
+    image: redis:alpine
+    container_name: nextcloud-redis
+    hostname: nextcloud-redis
+    networks:
+      - default
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_HOST_PASSWORD}
+  nextcloud-app:
+    image: nextcloud
+    container_name: nextcloud-app
+    restart: unless-stopped
+    ports:
+      - 80:80
+    depends_on:
+      - postgres-db
+      - nextcloud-redis
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=postgres-db
+      - NEXTCLOUD_ADMIN_USER=${NEXTCLOUD_ADMIN_USER}
+      - NEXTCLOUD_ADMIN_PASSWORD=${NEXTCLOUD_ADMIN_PASSWORD}
+      - NEXTCLOUD_TRUSTED_DOMAINS=${NEXTCLOUD_TRUSTED_DOMAINS}
+      - REDIS_HOST=nextcloud-redis
+      - REDIS_HOST_PASSWORD=${REDIS_HOST_PASSWORD}
+      - APACHE_DISABLE_REWRITE_IP=1
+      - TRUSTED_PROXIES=${TRUSTED_PROXIES}
+      - OVERWRITEPROTOCOL=https
+      - OVERWRITECLIURL=${OVERWRITECLIURL}
+      - PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT}
+      - PHP_UPLOAD_LIMIT=${PHP_UPLOAD_LIMIT}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_SECURE=${SMTP_SECURE}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_AUTHTYPE=${SMTP_AUTHTYPE}
+      - SMTP_NAME=${SMTP_NAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS}
+      - MAIL_DOMAIN=${MAIL_DOMAIN}
+    volumes:
+      - /var/docker/nextcloud/app:/var/www/html
+    links:
+      - postgres-db
+    networks:
+      - default
+  nextcloud-cron:
+    image: nextcloud
+    restart: unless-stopped
+    volumes:
+      - /var/docker/nextcloud/app:/var/www/html
+    entrypoint: /cron.sh
+    depends_on:
+      - postgres-db
+      - nextcloud-redis
+volumes:
+  redis:
+networks:
+  default:
+    driver: bridge
