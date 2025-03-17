@@ -26,7 +26,7 @@ services:
 
   nextcloud-app:
     image: nextcloud
-    entrypoint: sh -c "apt update && apt install -y nano smbclient libmagickcore-6.q16-6-extra && /entrypoint.sh apache2-foreground"
+    entrypoint: sh -c "apt update && apt install -y nano smbclient && /entrypoint.sh apache2-foreground"
     container_name: nextcloud-app
     restart: unless-stopped
     depends_on:
