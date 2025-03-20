@@ -8,7 +8,7 @@ pct create 208 /var/lib/vz/template/cache/debian-12-standard_12.7-1_amd64.tar.zs
 -storage local-lvm \
 -password testpilot \
 -features mount=cifs,nesting=1 \
--net0 name=eth0,bridge=vmbr0,gw=192.168.200.1,ip=192.168.200.221/24,type=veth && \
+-net0 name=eth0,bridge=vmbr0,gw=192.168.200.1,ip=192.168.200.208/24,type=veth && \
 pct start 208 && \
 sleep 10 && \
 pct resize 208 rootfs 20G && \
@@ -18,4 +18,8 @@ apt install -y curl dnsutils nano sudo wget && \
 useradd -m -s '/bin/bash' admin && \
 echo 'admin:testpilot' | chpasswd && \
 usermod -aG sudo admin && \
+wget -O zero.sh 'https://codeberg.org/criegerde/nextcloud-zero/raw/branch/master/debian.sh'  && \
+wget -O zero.cfg 'https://codeberg.org/criegerde/nextcloud-zero/raw/branch/master/zero_v2.cfg' && \
+chmod +x zero.sh && \
+sh zero.sh && \
 exit"
