@@ -20,6 +20,8 @@ echo 'admin:testpilot' | chpasswd && \
 usermod -aG sudo admin && \
 wget -O zero.sh 'https://codeberg.org/criegerde/nextcloud-zero/raw/branch/master/debian.sh'  && \
 wget -O zero.cfg 'https://codeberg.org/criegerde/nextcloud-zero/raw/branch/master/zero_v2.cfg' && \
+sed -i 's/ihre.clouddomain.de/pnc-test.escher.cc/g' zero.cfg && \
+sed -i 's/DATABASE="m"/DATABASE="p"/g' zero.cfg && \
 chmod +x zero.sh && \
-sh zero.sh && \
+bash zero.sh && \
 exit"
