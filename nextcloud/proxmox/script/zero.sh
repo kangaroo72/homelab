@@ -992,9 +992,9 @@ ${echo} "Your Nextcloud will now be installed silently - please be patient!"
 ${echo} ""
 if [ $DATABASE == "m" ]
 then
-sudo -u www-data php /var/www/nextcloud/occ maintenance:install --database "mysql" --database-name "${NCDBNAME}" --database-user "${NCDBUSER}" --database-pass "${NCDBPASSWORD}" --admin-user "${NEXTCLOUDADMINUSER}" --admin-pass "${NEXTCLOUDADMINUSERPASSWORD}" --data-dir "${NEXTCLOUDDATAPATH}"
+sudo -u www-data php /var/www/nextcloud/occ maintenance:install --database "mysql" --database-name "${NCDBNAME}" --database-user "${NCDBUSER}" --database-pass "${NCDBPASSWORD}" --admin-user "${LXCNA}" --admin-pass "${LXCNP}" --data-dir "${NEXTCLOUDDATAPATH}"
 else
-sudo -u www-data php /var/www/nextcloud/occ maintenance:install --database "pgsql" --database-name "${NCDBNAME}" --database-user "${NCDBUSER}" --database-pass "${NCDBPASSWORD}" --admin-user "${NEXTCLOUDADMINUSER}" --admin-pass "${NEXTCLOUDADMINUSERPASSWORD}" --data-dir "${NEXTCLOUDDATAPATH}"
+sudo -u www-data php /var/www/nextcloud/occ maintenance:install --database "pgsql" --database-name "${NCDBNAME}" --database-user "${NCDBUSER}" --database-pass "${NCDBPASSWORD}" --admin-user "${LXCNA}" --admin-pass "${LXCNP}" --data-dir "${NEXTCLOUDDATAPATH}"
 fi
 ${echo} ""
 sleep 2
@@ -1261,11 +1261,11 @@ ${echo} "https://$NEXTCLOUDDNS oder/or https://$IPA"
 ${echo} ""
 ${echo} "*******************************************************************************"
 ${echo} ""
-${echo} "Nextcloud User/Pwd: $NEXTCLOUDADMINUSER // $NEXTCLOUDADMINUSERPASSWORD"
+${echo} "Nextcloud User/Pwd: $LXCNA // $LXCNP"
 ${echo} ""
 ${echo} "Passwordreset     : sudo -s"
 ${echo} "                    source /root/.bashrc"
-${echo} "                    nocc user:resetpassword $NEXTCLOUDADMINUSER"
+${echo} "                    nocc user:resetpassword $LXCNA"
 ${echo} ""
 ${echo} "Nextcloud datapath: $NEXTCLOUDDATAPATH"
 ${echo} ""
