@@ -1008,6 +1008,8 @@ ${sudo} -u www-data ${cp} /var/www/nextcloud/config/config.php /var/www/nextclou
 ${sudo} -u www-data /usr/bin/php /var/www/nextcloud/occ config:system:set trusted_domains 0 --value="$YOURSERVERNAME"
 ${sudo} -u www-data /usr/bin/php /var/www/nextcloud/occ config:system:set trusted_domains 1 --value="$NEXTCLOUDDNS"
 ${sudo} -u www-data /usr/bin/php /var/www/nextcloud/occ config:system:set trusted_domains 2 --value="$IPA"
+${sudo} -u www-data /usr/bin/php /var/www/nextcloud/occ config:system:set trusted_proxies 1 --value="192.168.200.221"
+${sudo} -u www-data /usr/bin/php /var/www/nextcloud/occ config:system:set default_app --value="files"
 ${sudo} -u www-data /usr/bin/php /var/www/nextcloud/occ config:system:set overwrite.cli.url --value=https://"$NEXTCLOUDDNS"
 ${sudo} -u www-data /usr/bin/php /var/www/nextcloud/occ config:system:set overwritehost --value="$NEXTCLOUDDNS"
 ${echo} ""
