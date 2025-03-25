@@ -1,6 +1,8 @@
 whiptail --title "Willkommen" --msgbox "Dieses Skript installiert einen Debian Container." 8 78
 LXCID=$(whiptail --inputbox "Welche ID soll der Container haben?" 8 39 --title "LXC ID" 3>&1 1>&2 2>&3)
-LXCPASS=$(whiptail --inputbox "Welches Passwort soll der Container haben?" 8 39 --title "LXC Passwort" 3>&1 1>&2 2>&3)
+LXCRA=$(whiptail --inputbox "Wievel RAM (in M) soll der LXC haben?" 8 39 --title "LXC RAM" 3>&1 1>&2 2>&3)
+LXCCP=$(whiptail --inputbox "Wieviel Cores soll der Container haben?" 8 39 --title "LXC Cores" 3>&1 1>&2 2>&3)
+LXCPS=$(whiptail --inputbox "Welches Passwort soll der Container haben?" 8 39 --title "LXC Passwort" 3>&1 1>&2 2>&3)
 LXCHN=$(whiptail --inputbox "Welchen Hostname soll der Container haben?" 8 39 --title "LXC Hostname" 3>&1 1>&2 2>&3)
 LXCIP=$(whiptail --inputbox "Welche IP-Adresse (CIDR) soll der Container haben?" 8 39 --title "IP-Adresse" 3>&1 1>&2 2>&3)
 LXCGW=$(whiptail --inputbox "Welches Gateway soll der Container haben?" 8 39 --title "Gateway" 3>&1 1>&2 2>&3)
@@ -14,11 +16,11 @@ pct create $LXCID /var/lib/vz/template/cache/debian-12-standard_12.7-1_amd64.tar
 -arch amd64 \
 -ostype debian \
 -hostname $LXCHN \
--cores 2 \
--memory 8192 \
+-cores $LXCCP \
+-memory $LXCRA \
 -swap 512 \
 -storage local-lvm \
--password $LXCPASS \
+-password $LXCPS \
 -features mount=cifs,nesting=1 \
 -net0 name=eth0,bridge=vmbr0,gw=$LXCGW,ip=$LXCIP,type=veth \
 -unprivileged 1 \
