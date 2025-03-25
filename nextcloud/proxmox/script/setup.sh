@@ -20,7 +20,8 @@ pct create $LXCID /var/lib/vz/template/cache/debian-12-standard_12.7-1_amd64.tar
 -storage local-lvm \
 -password $LXCPASS \
 -features mount=cifs,nesting=1 \
--net0 name=eth0,bridge=vmbr0,gw=$LXCGW,ip=$LXCIP,type=veth && \
+-net0 name=eth0,bridge=vmbr0,gw=$LXCGW,ip=$LXCIP,type=veth \
+-unprivileged 1 \
 pct start $LXCID && \
 sleep 10 && \
 pct resize $LXCID rootfs 20G && \
